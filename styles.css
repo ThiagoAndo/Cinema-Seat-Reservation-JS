@@ -1,0 +1,320 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  background-color: rgba(0, 0, 0, 0.822);
+  color: rgb(209, 195, 195);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 40px;
+  text-shadow: black 1px 0px 0px;
+}
+
+#stage {
+  width: 400px;
+  margin: auto;
+  line-height: 150px;
+  border: 3px solid #ccc;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 40px;
+  background: linear-gradient(300deg, #00bfff, #7678df, #04704c);
+  background-size: 180% 180%;
+  animation: gradient-animation 8s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#seating {
+  overflow: hidden;
+  width: 730px;
+  margin: auto;
+  padding-left: 10px;
+}
+
+#seating section {
+  float: left;
+}
+
+#seating section div {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 30px;
+  line-height: 26px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 10px;
+  background-color: #948f8f;
+  background-image: url("./svg/chair-a.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgb(206, 206, 47);
+}
+
+#eg {
+  position: absolute;
+  top: 80px;
+  left: 130px;
+  display: inline-flex;
+  height: 130px;
+}
+
+#eg div {
+  margin-left: 8px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  display: inline-flex;
+}
+#eg div p {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: start;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  margin: 0;
+  padding: 0;
+  height: 26px;
+  width: 30px;
+}
+
+ul li:first-of-type {
+  background-color: #948f8f;
+  background-image: url("./svg/chair-a.svg");
+  background-position: center;
+}
+
+ul li:nth-child(2) {
+  background-color: black;
+  background-image: url("./svg/chair-r.svg");
+  background-position: center;
+}
+
+ul li:last-of-type {
+  background-color: black;
+  background-image: url("./svg/chair-s.svg");
+  background-position: center;
+}
+
+p {
+  margin: 0;
+  font-size: 12px;
+}
+
+#seating section .seats:hover {
+  background-color: black;
+  background-image: url("./svg/chair-h.svg");
+  cursor: pointer;
+}
+
+#seating section .seats p:hover {
+  color: black;
+  font-weight: 700;
+}
+
+#seating section .clicked {
+  color: black;
+  background-color: black;
+  background-image: url("./svg/chair-s.svg");
+}
+#seating section .reserved {
+  color: black;
+  background-color: black;
+  background-image: url("./svg/chair-r.svg");
+}
+
+#seating #right .label {
+  float: right;
+}
+
+#seating .label {
+  background-image: none;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+#left,
+#right {
+  width: 160px;
+}
+
+#middsile {
+  width: 360px;
+  margin: 0 20px;
+}
+
+#reserve {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 20px;
+  background: #b7e792;
+  text-decoration: none;
+}
+
+/****************** Reservation form *****************/
+
+#formContainer {
+  position: absolute;
+  width: 30vw;
+  opacity: 0;
+  top: -100%;
+  left: 35%;
+  color: black;
+  background: #ececec;
+  border-radius: 15px;
+  transition: opacity 0.3s linear;
+}
+
+#resform {
+  width: 30vw;
+  padding: 20px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+#resform h2,
+p {
+  text-align: center;
+}
+
+#confirmres {
+  text-align: center;
+}
+
+input {
+  display: block;
+  width: 15vw;
+  margin: auto;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+#confirmbtn,
+button {
+  display: block;
+  width: 15vw;
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  padding: 6px 14px 6px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #0077c8;
+  background-image: -webkit-linear-gradient(
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.05) 95%
+  );
+  background-image: -moz-linear-gradient(
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.05) 95%
+  );
+  background-image: -linear-gradient(
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.05) 95%
+  );
+  background-image: -ms-linear-gradient(
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.05) 95%
+  );
+  background-repeat: repeat-x;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  transition: 0.1s;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+#Mreserve {
+  position: fixed;
+  top: 150px;
+  right: 100px;
+  font-size: 25px;
+  font-weight: 500;
+  height: 60px;
+  width: 150px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+#print {
+  position: absolute;
+  width: 25vw;
+  height: 15vw;
+  opacity: 0;
+  top: -100px;
+  left: 37.5%;
+  color: black;
+  background: #ececec;
+  border-radius: 10px;
+  transition: opacity 0.3s linear;
+  text-align: center;
+}
+
+#print h3 {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  margin: 50px 0;
+}
+#print div {
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  position: absolute;
+  background-image: url("./svg/icons8-close-window-48.png");
+  background-position: center;
+}
+
+#print button {
+  width: 40%;
+}

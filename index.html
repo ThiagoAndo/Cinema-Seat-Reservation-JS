@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Seat Reservations</title>
+    <meta name="description" content="Reserve your seat" />
+    <meta name="Thiago" content="Cinema Seats Reservation" />
+    <link rel="icon" href="./svg/chair-a.svg" />
+
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <h1>Reserve Your Seats</h1>
+
+    <div id="stage">Stage</div>
+    <div id="eg">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <p>Available</p>
+        <p>Reserved</p>
+        <p>Chosen</p>
+      </div>
+    </div>
+
+    <div id="formContainer">
+      <h2>Fill out the form!</h2>
+      <form id="resform">
+        <input
+          type="text"
+          id="Fname"
+          name="Fname"
+          placeholder="First Name"
+          required
+        />
+        <input
+          type="text"
+          id="Sname"
+          name="Sname"
+          placeholder="Surname"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </form>
+      <button id="confirmbtn">submit</button>
+    </div>
+    <div id="seating">
+      <section id="left"></section>
+
+      <section id="middsile"></section>
+
+      <section id="right"></section>
+    </div>
+    <button id="Mreserve">Reserve</button>
+
+    <div id="print">
+      <h3>Wold you like to download your receipt?</h3>
+      <div></div>
+      <button>Download</button>
+    </div>
+  </body>
+</html>
