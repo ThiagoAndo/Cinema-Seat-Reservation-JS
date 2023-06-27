@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-  //Start of making seats=========================================================
   let stageL = this.document.getElementById("left");
   let stageR = this.document.getElementById("right");
   let middsile = this.document.getElementById("middsile");
