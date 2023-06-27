@@ -198,6 +198,7 @@ p {
   background: #ececec;
   border-radius: 15px;
   transition: opacity 0.3s linear;
+  z-index: 100;
 }
 
 #resform {
@@ -288,22 +289,28 @@ button {
 
 #print {
   position: absolute;
-  width: 25vw;
-  height: 15vw;
+  width: 300px;
+  height: 200px;
   opacity: 0;
   top: -100px;
-  left: 37.5%;
+  left: 34%;
   color: black;
   background: #ececec;
   border-radius: 10px;
   transition: opacity 0.3s linear;
   text-align: center;
+  z-index: 100;
+}
+
+#formContainer h3 {
+  text-align: center;
 }
 
 #print h3 {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  margin: 50px 0;
+  margin: 60px 20px 30px 20px;
 }
+
 #print div {
   top: 10px;
   right: 10px;
@@ -317,4 +324,14 @@ button {
 
 #print button {
   width: 40%;
+}
+
+#block {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vw;
+  background-color: #ffffff00;
+  display: none;
 }
