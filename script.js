@@ -229,7 +229,6 @@ window.addEventListener("load", function () {
 
   function makePerson() {
     person1 = new PersoReservation(Fname, Sname, email, seatReserved);
-    alert("Hello " + `${person1.Name}` + " \n Thank you for your purchase!");
   }
 
   //End of making a object Person ============================================
@@ -243,7 +242,6 @@ window.addEventListener("load", function () {
     changeToReserved.forEach((seat) => {
       seat.className = "reserved";
       seat.removeEventListener("click", changeClass);
-      console.log(seat.innerHTML);
     });
   }
 
@@ -269,6 +267,8 @@ window.addEventListener("load", function () {
     pdf.text("Email: " + `${person1.Email}` + "", 20, 60);
     pdf.text("Seats: " + `${person1.Seat}` + "", 20, 70);
     pdf.save(`${person1.Name}` + "_receipt" + ".pdf");
+    pScreen.style.top = "-200px";
+    pScreen.style.opacity = 100;
   };
 
   //End of print receipt screen ============================================
