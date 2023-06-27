@@ -1,7 +1,19 @@
 window.addEventListener("load", function () {
-  let stageL = this.document.getElementById("left");
-  let stageR = this.document.getElementById("right");
-  let middsile = this.document.getElementById("middsile");
+  const stageL = this.document.getElementById("left");
+  const stageR = this.document.getElementById("right");
+  const middsile = this.document.getElementById("middsile");
+  let seatReserved = [];
+  const reserveButton = this.document.querySelector("#Mreserve");
+  const forms = document.querySelector("#formContainer");
+  let Fname = "";
+  let Sname = "";
+  let email = "";
+  const blockSeats = this.document.getElementById("block");
+  const confiBtn = this.document.getElementById("confirmbtn");
+  const pScreen = this.document.getElementById("print");
+  const download = document.querySelector("#print > button");
+  const closeScreen = this.document.querySelector("#print > div");
+
   let label = [
     "A",
     "B",
@@ -18,230 +30,177 @@ window.addEventListener("load", function () {
     "M",
     "N",
   ];
-  let i = 0;
-  let sitNum = [];
-  let count2 = 0;
 
-  //Seat Left============================================================:
-  for (i; i < 14; i++) {
-    stageL.innerHTML += "<div class='label'>" + `${label[i]}` + "</div>";
+  makeSeats(stageL, 0, 14, 13);
+  makeSeats(stageR, 12, 14, 13);
+  makeSeats(middsile, 3, 139, 7);
 
-    for (var y = 1; y <= 3; y++) {
-      count2++;
-      if (i == 0 && count2 < 4) {
-        stageL.innerHTML +=
-          "<div id=" +
-          `${label[i]}` +
-          "-" +
-          `${y}` +
-          " class = seats>" +
-          "<p>" +
-          `${y}` +
-          "</p>" +
-          "</div>";
-        sitNum.push(y);
-      }
+  //Start of making Seats=================================================
 
-      if (count2 == 4 && i >= 1) {
-        sitNum.push(sitNum[sitNum.length - 1] + 13);
-        count2 = 1;
-        stageL.innerHTML +=
-          "<div id=" +
-          `${label[i]}` +
-          "-" +
-          `${sitNum[sitNum.length - 1]}` +
-          " class = seats><p>" +
-          `${sitNum[sitNum.length - 1]}` +
-          "</p></div>";
-      } else if (i >= 1) {
-        sitNum.push(sitNum[sitNum.length - 1] + 1);
-        stageL.innerHTML +=
-          "<div id=" +
-          `${label[i]}` +
-          "-" +
-          `${sitNum[sitNum.length - 1]}` +
-          " class = seats><p>" +
-          `${sitNum[sitNum.length - 1]}` +
-          "</p></div>";
+  function makeSeats(stage, Fnum, Snum, Tnum) {
+    let i = 0;
+    let sitNum = [];
+    let count2 = 0;
+    let count4 = 0;
+    let condition1 = false;
+    let condition2 = false;
+    let condition3 = false;
+    function evaluate(y) {
+      switch (stage.id) {
+        case "middsile":
+          condition1 = y < 10;
+          condition2 = count2 == 11;
+          condition3 = y >= 10 && count2 < 10;
+
+          break;
+        default:
+          condition1 = i == 0 && count2 < 4;
+          condition2 = count2 == 4 && i >= 1;
+          condition3 = i >= 1;
       }
     }
-  }
-
-  //Seat Middle========================================================:
-
-  sitNum = [];
-  count2 = 0;
-  i = 0;
-
-  for (var y = 1; y <= 139; y++) {
-    count2++;
-
-    if (y < 10) {
-      middsile.innerHTML +=
-        "<div id=" +
-        `${label[i]}` +
-        "-" +
-        `${y + 3}` +
-        " class = seats>" +
-        "<p>" +
-        `${y + 3}` +
-        "</p>" +
-        "</div>";
-      sitNum.push(y + 3);
-    }
-
-    if (count2 == 11) {
-      i++;
-      sitNum.push(sitNum[sitNum.length - 1] + 7);
-      count2 = 1;
-      middsile.innerHTML +=
-        "<div id=" +
-        `${label[i]}` +
-        "-" +
-        `${sitNum[sitNum.length - 1]}` +
-        " class = seats><p>" +
-        `${sitNum[sitNum.length - 1]}` +
-        "</p></div>";
-    } else if (y >= 10 && count2 < 10) {
-      sitNum.push(sitNum[sitNum.length - 1] + 1);
-      middsile.innerHTML +=
-        "<div id=" +
-        `${label[i]}` +
-        "-" +
-        `${sitNum[sitNum.length - 1]}` +
-        " class = seats><p>" +
-        `${sitNum[sitNum.length - 1]}` +
-        "</p></div>";
-    }
-  }
-
-  //Seat Right========================================================:
-
-  sitNum = [];
-  count2 = 0;
-  i = 0;
-
-  for (i; i < 14; i++) {
-    stageR.innerHTML += "<div class='label'>" + `${label[i]}` + "</div>";
-
-    for (var y = 1; y <= 3; y++) {
-      count2++;
-      if (i == 0 && count2 < 4) {
-        stageR.innerHTML +=
-          "<div id=" +
-          `${label[i]}` +
-          "-" +
-          `${y + 12}` +
-          " class = seats>" +
-          "<p>" +
-          `${y + 12}` +
-          "</p>" +
-          "</div>";
-        sitNum.push(y + 12);
+    if (stage.id != "middsile") {
+      for (i; i < Snum; i++) {
+        stage.innerHTML += "<div class='label'>" + `${label[i]}` + "</div>";
+        makeSeatsPartTwo(3);
       }
-
-      if (count2 == 4 && i >= 1) {
-        sitNum.push(sitNum[sitNum.length - 1] + 13);
-        count2 = 1;
-        stageR.innerHTML +=
-          "<div id=" +
-          `${label[i]}` +
-          "-" +
-          `${sitNum[sitNum.length - 1]}` +
-          " class = seats><p>" +
-          `${sitNum[sitNum.length - 1]}` +
-          "</p></div>";
-      } else if (i >= 1) {
-        sitNum.push(sitNum[sitNum.length - 1] + 1);
-        stageR.innerHTML +=
-          "<div id=" +
-          `${label[i]}` +
-          "-" +
-          `${sitNum[sitNum.length - 1]}` +
-          " class = seats><p>" +
-          `${sitNum[sitNum.length - 1]}` +
-          "</p></div>";
+    } else {
+      makeSeatsPartTwo(140);
+    }
+    function makeSeatsPartTwo(num) {
+      for (var y = 1; y <= num; y++) {
+        count2++;
+        evaluate(y);
+        if (condition1) {
+          stage.innerHTML +=
+            "<div id=" +
+            `${label[count4]}` +
+            "-" +
+            `${y + Fnum}` +
+            " class = seats>" +
+            "<p>" +
+            `${y + Fnum}` +
+            "</p>" +
+            "</div>";
+          sitNum.push(y + Fnum);
+        }
+        evaluate(y);
+        if (condition2) {
+          sitNum.push(sitNum[sitNum.length - 1] + Tnum);
+          count4++;
+          count2 = 1;
+          stage.innerHTML +=
+            "<div id=" +
+            `${label[count4]}` +
+            "-" +
+            `${sitNum[sitNum.length - 1]}` +
+            " class = seats><p>" +
+            `${sitNum[sitNum.length - 1]}` +
+            "</p></div>";
+          evaluate(y);
+        } else if (condition3) {
+          sitNum.push(sitNum[sitNum.length - 1] + 1);
+          stage.innerHTML +=
+            "<div id=" +
+            `${label[count4]}` +
+            "-" +
+            `${sitNum[sitNum.length - 1]}` +
+            " class = seats><p>" +
+            `${sitNum[sitNum.length - 1]}` +
+            "</p></div>";
+        }
       }
     }
   }
 
   //Start of making random Reserved seats=================================================
-  let condition = true;
-  let count3 = 0;
-  var getSeat = "";
-  position = ["#left", "#middsile", "#right"];
 
-  for (var z = 0; z <= 70; z++) {
-    if (count3 == 0 || count3 == 2) {
-      randonSeat(50, count3);
-    } else {
-      randonSeat(120, count3);
+  (function () {
+    let condition = true;
+    let count3 = 0;
+    var getSeat = "";
+    position = ["#left", "#middsile", "#right"];
+    for (var z = 0; z <= 70; z++) {
+      if (count3 == 0 || count3 == 2) {
+        randonSeat(50, count3);
+      } else {
+        randonSeat(120, count3);
+      }
+      count3++;
+      if (count3 == 3) {
+        count3 = 0;
+      }
     }
-
-    count3++;
-    if (count3 == 3) {
-      count3 = 0;
+    function randonSeat(num1, num2) {
+      var getSeatNum = Math.round(Math.random() * num1) + 1;
+      getSeat = document.querySelector(
+        "#seating " +
+          `${position[num2]}` +
+          " div:nth-child(" +
+          `${getSeatNum}` +
+          ")"
+      );
+      condition = getSeat.getAttribute("class") != "label";
+      if (condition) {
+        getSeat.classList.remove("seats");
+        getSeat.classList.add("reserved");
+      }
     }
-  }
+  })();
 
-  function randonSeat(num1, num2) {
-    var getSeatNum = Math.round(Math.random() * num1) + 1;
-    getSeat = document.querySelector(
-      "#seating " +
-        `${position[num2]}` +
-        " div:nth-child(" +
-        `${getSeatNum}` +
-        ")"
-    );
-
-    condition = getSeat.getAttribute("class") != "label";
-    if (condition) {
-      getSeat.classList.remove("seats");
-      getSeat.classList.add("reserved");
-    }
-  }
+  //End of making random Reserved seats======================================
 
   //Start of Reserving Seats=================================================
-
   let seats = this.document.querySelectorAll(".seats");
-
   seats.forEach((seat) => {
-    seat.addEventListener("click", function () {
-      recordSeat(this.getAttribute("id"));
-      this.classList.remove("seats");
-      this.classList.add("clicked");
-    });
+    seat.addEventListener("click", changeClass);
   });
 
-  let seatReserved = [];
-  let countReserved = 0;
-
-  function recordSeat(seatID) {
-    seatReserved.push(seatID);
+  function changeClass() {
+    if (!this.value) {
+      this.className = "clicked";
+      this.value = 1;
+    } else {
+      this.className = "seats";
+      this.value = undefined;
+    }
   }
 
-  let reserveButton = this.document.querySelector("#Mreserve");
-  let forms = document.querySelector("#formContainer");
-  let Fname = "";
-  let Sname = "";
-  let email = "";
   reserveButton.onclick = function () {
+    blockSeats.style.display = "block";
     forms.style.top = "30%";
     forms.style.opacity = 100;
+    recordSeats();
   };
 
-  let confiBtn = this.document.getElementById("confirmbtn");
-  confiBtn.onclick = () => {
-    changeSeatToReserved();
-  };
+  function returnClicked() {
+    return this.document.querySelectorAll(".clicked");
+  }
 
-  function changeSeatToReserved() {
-    let changeToReserved = document.querySelectorAll(".clicked");
-    changeToReserved.forEach((seat) => {
-      seat.classList.remove("clicked");
-      seat.classList.add("reserved");
+  function recordSeats() {
+    let clickedSeats = returnClicked();
+    clickedSeats.forEach((seat) => {
+      seatReserved.push(seat.getAttribute("id"));
     });
+  }
+  // Start of I want to change seats ===============================================
+  const changeSit = document.querySelector("#formContainer h3 a");
+  changeSit.onclick = (event) => {
+    event.preventDefault();
+    seatReserved = [];
+    forms.style.top = "-100%";
+    forms.style.opacity = 0;
+    blockSeats.style.display = "none";
+    let clickedSeats = returnClicked();
+    clickedSeats.forEach((seat) => {
+      seat.className = "seat";
+    });
+  };
+  // End of I want to change seats ===============================================
 
+  //Start of colecting data from the form ========================================
+
+  confiBtn.onclick = () => {
     Fname = document.getElementById("Fname").value;
     Sname = document.getElementById("Sname").value;
     email = document.getElementById("email").value;
@@ -250,12 +209,16 @@ window.addEventListener("load", function () {
       input.value = "";
     });
 
-    forms.style.top = "-100%";
-    forms.style.opacity = 0;
+    if (Fname && Sname && email) {
+      forms.style.top = "-100%";
+      forms.style.opacity = 0;
+      makePerson();
+      printScreen();
+    }
+  };
+  //End of colecting data from the form ========================================
 
-    makePerson();
-    printScreen();
-  }
+  //Start of making a object Person ============================================
 
   function PersoReservation(name, Surname, emailaddress, seatId) {
     this.Name = name;
@@ -269,25 +232,31 @@ window.addEventListener("load", function () {
     alert("Hello " + `${person1.Name}` + " \n Thank you for your purchase!");
   }
 
-  let pScreen = this.document.getElementById("print");
+  //End of making a object Person ============================================
+
+  //Start of print receipt screen ============================================
+
   function printScreen() {
     pScreen.style.top = "30%";
     pScreen.style.opacity = 100;
+    let changeToReserved = returnClicked();
+    changeToReserved.forEach((seat) => {
+      seat.className = "reserved";
+      seat.removeEventListener("click", changeClass);
+      console.log(seat.innerHTML);
+    });
   }
-
-  let closeScreen = this.document.querySelector("#print > div");
 
   closeScreen.onclick = () => {
     pScreen.style.opacity = 0;
-
+    blockSeats.style.display = "none";
     this.setTimeout(() => {
       pScreen.style.top = "-100px";
     }, 350);
   };
 
-  let download = document.querySelector("#print > button");
-
   download.onclick = () => {
+    blockSeats.style.display = "none";
     var pdf = new jsPDF({
       orientation: "p",
       unit: "mm",
@@ -299,7 +268,8 @@ window.addEventListener("load", function () {
     pdf.text("Surname: " + `${person1.SurName}` + "", 20, 50);
     pdf.text("Email: " + `${person1.Email}` + "", 20, 60);
     pdf.text("Seats: " + `${person1.Seat}` + "", 20, 70);
-    pdf.addPage();
     pdf.save(`${person1.Name}` + "_receipt" + ".pdf");
   };
+
+  //End of print receipt screen ============================================
 });
