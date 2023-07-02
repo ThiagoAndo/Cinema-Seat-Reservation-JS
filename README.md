@@ -25,17 +25,17 @@
 
 </br>
 <p align="center">
-    <img src="./screenshots/Capture.PNG" alt="Material Bread logo">
+    <img src="./screenshots/Capture.PNG" alt="Material Bread logo"  width=500>
 </p>
 </br>
 </br>
 <p align="center">
-    <img src="./screenshots/Capture2.PNG" alt="Material Bread logo">
+    <img src="./screenshots/Capture2.PNG" alt="Material Bread logo"  width=500>
 </p>
 </br>
 </br>
 <p align="center">
-    <img src="./screenshots/Capture3.PNG" alt="Material Bread logo">
+    <img src="./screenshots/Capture3.PNG" alt="Material Bread logo"  width=500>
 </p>
 </br>
 
