@@ -41,7 +41,7 @@
 
 ### Links
 
-- Live Site URL: [thiagoando.github](https://thiagoando.github.io/Features-Galore/)
+- Live Site URL: [thiagoando.github]( https://thiagoando.github.io/Cinema-Seat-Reservation-JS/)
 
 ### Built with
 
