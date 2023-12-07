@@ -19,6 +19,8 @@
 - Fill out a form with their data.
 
 - Download a receipt with their data and the seats chosen.
+
+- [Alive Website](https://thiagoando.github.io/Cinema-Seat-Reservation-JS/)
   </br>
 
 ### Screenshots
